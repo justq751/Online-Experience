@@ -32,10 +32,9 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
     public void OnClick_CreateNameButton()
     {
-        if (UserNameInput.text.Length >= 2)
-        {
-            PhotonNetwork.NickName = UserNameInput.text;
-        }
+        PhotonNetwork.NickName = UserNameInput.text;
+        UserNameScreen.SetActive(false);
+        ConnectScreen.SetActive(true);
     }
 
     public void OnNameFieldChanged()
