@@ -28,8 +28,13 @@ public class MenuManager : MonoBehaviourPunCallbacks
         UserNameScreen.SetActive(true);
     }
 
-    #region UIMethods
+    public override void OnJoinedRoom()
+    {
+        //play game scene
+        PhotonNetwork.LoadLevel(1);
+    }
 
+    #region UIMethods
     public void OnClick_CreateNameButton()
     {
         PhotonNetwork.NickName = UserNameInput.text;
@@ -49,5 +54,18 @@ public class MenuManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void OnClick_JoinRoom()
+    {
+        RoomOptions roomops = new RoomOptions();
+        roomops.MaxPlayers = 4;
+        PhotonNetwork.JoinOrCreateRoom(JoinRoomInput.text, roomops, TypedLobby.Default);
+    }
+
+    public void OnClick_CreateRoom()
+    {
+        RoomOptions roomops = new RoomOptions();
+        roomops.MaxPlayers = 4;
+        PhotonNetwork.CreateRoom(CreateRoomInput.text, roomops, null);
+    }
     #endregion
 }
