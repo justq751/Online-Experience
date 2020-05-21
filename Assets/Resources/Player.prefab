@@ -267,7 +267,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &-5757978147498047909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,8 +281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2318610006755900979}
-  moveSpeed: 1
   sprite: {fileID: 2318610006228937069}
+  animator: {fileID: 2318610006228936851}
+  photonView: {fileID: 2181327991473246379}
+  moveSpeed: 5
 --- !u!114 &2181327991473246379
 MonoBehaviour:
   m_ObjectHideFlags: 0
