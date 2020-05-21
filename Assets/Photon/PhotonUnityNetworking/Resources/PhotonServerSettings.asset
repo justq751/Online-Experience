@@ -37,6 +37,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - FlipSprite_Right
+  - FlipSprite_Left
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
