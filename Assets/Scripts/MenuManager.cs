@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel(1);
     }
 
+
     #region UIMethods
     public void OnClick_CreateNameButton()
     {
