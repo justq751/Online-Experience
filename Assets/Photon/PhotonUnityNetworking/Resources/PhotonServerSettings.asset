@@ -38,6 +38,8 @@ MonoBehaviour:
   - FlipSprite_Left
   - FlipSprite_Right
   - RespawnSpaceship
+  - Destroy
+  - ChangeDirection
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

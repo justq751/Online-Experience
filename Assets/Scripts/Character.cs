@@ -9,8 +9,11 @@ public class Character : MonoBehaviourPun
     public SpriteRenderer sprite;
     public Animator animator;
     public PhotonView photonView;
-    private bool allowMovement = true;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnpointRight;
+    public Transform bulletSpawnpointLeft;
 
+    private bool allowMovement = true;
     public float moveSpeed = 1.0f;
 
     private void Awake()
@@ -70,6 +73,15 @@ public class Character : MonoBehaviourPun
 
     private void Shoot()
     {
+        if (sprite.flipX == false)
+        {
+            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, new Vector2(bulletSpawnpointRight.position.x, bulletSpawnpointRight.position.y), Quaternion.identity, 0);
+        }
+        if (sprite.flipX == true)
+        {
+            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, new Vector2(bulletSpawnpointLeft.position.x, bulletSpawnpointLeft.position.y), Quaternion.identity, 0);
+            bullet.GetComponent<PhotonView>().RPC("ChangeDirection", RpcTarget.AllBuffered);
+        }
         animator.SetBool("IsShooting", true);
         allowMovement = false;
     }
