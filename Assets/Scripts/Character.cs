@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviourPun
 {
@@ -12,6 +13,8 @@ public class Character : MonoBehaviourPun
     public GameObject bulletPrefab;
     public Transform bulletSpawnpointRight;
     public Transform bulletSpawnpointLeft;
+    public Text playerName;
+    
 
     private bool allowMovement = true;
     public float moveSpeed = 1.0f;
@@ -21,6 +24,13 @@ public class Character : MonoBehaviourPun
         if (photonView.IsMine)
         {
             playerCamera.SetActive(true);
+            playerName.text = "You: " + PhotonNetwork.NickName;
+            playerName.color = Color.green;
+        }
+        else
+        {
+            playerName.text = photonView.Owner.NickName;
+            playerName.color = Color.red;
         }
     }
 
