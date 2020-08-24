@@ -48,7 +48,7 @@ public class MyBullet : MonoBehaviourPun
         }
 
         PhotonView target = collision.gameObject.GetComponent<PhotonView>();
-        if (target != null && (target.IsMine || target.IsSceneView))
+        if (target != null && (!target.IsMine || target.IsSceneView))
         {
             if (target.tag == "Player")
             {
