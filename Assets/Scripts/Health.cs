@@ -10,6 +10,8 @@ public class Health : MonoBehaviourPun
     public Rigidbody2D rb;
     public SpriteRenderer sr;
     public BoxCollider2D boxCol;
+    public GameObject playerCanvas;
+    public Character playerScript;
 
     public float health;
 
@@ -17,6 +19,8 @@ public class Health : MonoBehaviourPun
     {
         if (photonView.IsMine && health <= 0)
         {
+            GameManager.instance.EnableRespawn();
+            playerScript.disableInputs = true;
             this.GetComponent<PhotonView>().RPC("Death", RpcTarget.AllBuffered);
         }
     }
@@ -27,6 +31,7 @@ public class Health : MonoBehaviourPun
         rb.gravityScale = 0;
         boxCol.enabled = false;
         sr.enabled = false;
+        playerCanvas.SetActive(false);
     }
 
     [PunRPC]
@@ -35,6 +40,12 @@ public class Health : MonoBehaviourPun
         rb.gravityScale = 1;
         boxCol.enabled = true;
         sr.enabled = true;
+        playerCanvas.SetActive(true);
+    }
+     
+    public void EnableInputs()
+    {
+        playerScript.disableInputs = false;
     }
 
     [PunRPC]

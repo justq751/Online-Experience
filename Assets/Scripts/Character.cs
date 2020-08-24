@@ -14,15 +14,18 @@ public class Character : MonoBehaviourPun
     public Transform bulletSpawnpointRight;
     public Transform bulletSpawnpointLeft;
     public Text playerName;
-    
 
     private bool allowMovement = true;
+    public bool disableInputs = false;
+
     public float moveSpeed = 1.0f;
+
 
     private void Awake()
     {
         if (photonView.IsMine)
         {
+            GameManager.instance.localPlayer = this.gameObject;
             playerCamera.SetActive(true);
             playerName.text = "You: " + PhotonNetwork.NickName;
             playerName.color = Color.green;
@@ -36,7 +39,7 @@ public class Character : MonoBehaviourPun
 
     private void Update()
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && !disableInputs)
         {
             CheckInput();
         }

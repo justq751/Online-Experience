@@ -747,6 +747,7 @@ MonoBehaviour:
   bulletSpawnpointRight: {fileID: 1707623891}
   bulletSpawnpointLeft: {fileID: 760918539}
   playerName: {fileID: 152070900}
+  disableInputs: 0
   moveSpeed: 5
 --- !u!114 &2181327991473246379
 MonoBehaviour:
@@ -816,3 +817,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillImage: {fileID: 2052643453}
+  rb: {fileID: 2318610007644849143}
+  sr: {fileID: 2318610006228937069}
+  boxCol: {fileID: 2318610007644849142}
+  playerCanvas: {fileID: 1158703747}
+  playerScript: {fileID: -5757978147498047909}
+  health: 0
