@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject canvas;
     public GameObject sceneCamera;
+    public GameObject leaveScreen;
 
     public Text pingRate;
     public Text spawnTimer;
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleLeaveScreen();
+        }
         if (startRespawn)
         {
             StartRespawn();
@@ -71,5 +76,23 @@ public class GameManager : MonoBehaviour
     {
         float randomPos = Random.Range(-5f, 5f);
         localPlayer.transform.localPosition = new Vector2(randomPos, 2);
+    }
+
+    public void ToggleLeaveScreen()
+    {
+        if (leaveScreen.activeSelf)
+        {
+            leaveScreen.SetActive(false);
+        }
+        else
+        {
+            leaveScreen.SetActive(true);
+        }
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(0);
     }
 }
