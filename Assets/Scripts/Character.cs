@@ -63,9 +63,13 @@ public class Character : MonoBehaviourPun
             allowMovement = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && !animator.GetBool("IsShooting")) //TEMP SOLUTION FOR FLIPPING AND MOVING
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) //TEMP SOLUTION FOR FLIPPING AND MOVING
         {
             animator.SetBool("IsMoving", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) && !animator.GetBool("IsShooting")) //TEMP SOLUTION FOR FLIPPING AND MOVING
+        {
             photonView.RPC("FlipSprite_Right", RpcTarget.AllBuffered);
         }
         else if (Input.GetKeyUp(KeyCode.D))
@@ -74,9 +78,7 @@ public class Character : MonoBehaviourPun
         }
         if (Input.GetKeyDown(KeyCode.A) && !animator.GetBool("IsShooting"))
         {
-            animator.SetBool("IsMoving", true);
             photonView.RPC("FlipSprite_Left", RpcTarget.AllBuffered);
-            
         }
         else if (Input.GetKeyUp(KeyCode.A))
         {
