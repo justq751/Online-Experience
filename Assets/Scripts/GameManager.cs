@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             respawnUI.SetActive(false);
             startRespawn = false;
+            PlayerRelocation();
             localPlayer.GetComponent<Health>().EnableInputs();
             localPlayer.GetComponent<PhotonView>().RPC("Revive", RpcTarget.AllBuffered);
         }
@@ -64,5 +65,11 @@ public class GameManager : MonoBehaviour
             Quaternion.identity, 0);
         canvas.SetActive(false);
         sceneCamera.SetActive(false);
+    }
+
+    public void PlayerRelocation()
+    {
+        float randomPos = Random.Range(-5f, 5f);
+        localPlayer.transform.localPosition = new Vector2(randomPos, 2);
     }
 }

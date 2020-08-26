@@ -41,13 +41,10 @@ public class Health : MonoBehaviourPun
         boxCol.enabled = true;
         sr.enabled = true;
         playerCanvas.SetActive(true);
+        fillImage.fillAmount = 1;
+        health = 1;
     }
-     
-    public void EnableInputs()
-    {
-        playerScript.disableInputs = false;
-    }
-
+    
     [PunRPC]
     public void HealthUpdate(float damage)
     {
@@ -55,4 +52,10 @@ public class Health : MonoBehaviourPun
         health = fillImage.fillAmount;
         CheckHealth();
     }
+
+    public void EnableInputs()
+    {
+        playerScript.disableInputs = false;
+    }
+
 }
